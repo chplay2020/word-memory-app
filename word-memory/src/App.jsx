@@ -5,14 +5,18 @@ import Welcome from "./components/layouts/Welcome"
 
 function App() {
 
-  const page = 0 // 0: Welcome, 1: Dashboard, 2: Challenge
+  const selectedPage = 2 // 0: Welcome, 1: Dashboard, 2: Challenge
+
+  const pages = {
+    0: <Welcome />,
+    1: <Dashboard />,
+    2: <Challenge />
+  }
 
 
   return (
     <Layout>
-      <Welcome />
-      <Dashboard />
-      <Challenge />
+      {pages[selectedPage]}
     </Layout>
   )
 }
