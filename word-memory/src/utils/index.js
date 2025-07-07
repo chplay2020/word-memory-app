@@ -1,4 +1,4 @@
-import PLAN from './year_plan.json'
+// import PLAN from './year_plan.json'
 import WORDS from './VOCAB.json' // Import danh sách từ vựng từ file VOCAB.json
 
 // Hàm đếm ngược đến hết 24h kể từ mốc targetUTCMillis (miligiây UTC)
