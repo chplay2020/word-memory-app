@@ -9,16 +9,23 @@ export default function History(props) {
                 <p>You have no attemps! Press <b>Start</b> to begin ⭐</p>
             ) : (
                 <div className="history-list">
-                    <div className="card-button-secondary">
-                        <div>
-                            <p>Started</p>
-                            <h6>Mar 25 2025</h6>
-                        </div>
-                        <div>
-                            <p>Streak</p>
-                            <h6>53</h6>
-                        </div>
-                    </div>
+                    {historyKeys.map((item, itemIx) => {
+                        const dateKey = (new Date(item)).toString().split(' ').slice(1, 4).join(' ');
+                        return (
+                            <div key={itemIx}
+                                className="card-button-secondary">
+                                <div>
+                                    <p>Started</p>
+                                    <h6>{dateKey}</h6>
+                                </div>
+                                <div>
+                                    <p>Streak</p>
+                                    <h6>{history[item]}</h6>
+                                </div>
+                            </div>
+                        )
+                    })}
+
                 </div>
             )}
 

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { convertMilliseconds, countdownIn24Hours } from '../utils';
 
 export default function Countdown(props) {
@@ -9,10 +9,17 @@ export default function Countdown(props) {
 
     const timer = convertMilliseconds(remainingMS)
 
+    useEffect(() => {
+        const interval = setInterval(() => { // chạy function mỗi giây
+            setRemainingMS(countdownIn24Hours(targetMillis)); // cập nhật thời gian còn lại
+        }, 1000)
+        return () => clearInterval(interval);
+    }, [targetMillis]); // [targetMillis] là dependency arr -> Chỉ chạy effect khi targetMillis thay đổi
+
 
     return (
         <div className="card countdown-card">
-            <h1 className="item-header"> Day {1}</h1>
+            <h1 className="item-header"> Day {day}</h1>
             <div className="toda-container">
                 <div>
                     <p>Time remaining</p>
